@@ -1,3 +1,5 @@
+
+// Creating elements
 var question = document.getElementById("question");
 var choices = document.from(document.getElementsByClassName("choice-text"));
 var progressText = document.getElementById("progressText");
@@ -17,6 +19,14 @@ var isWin = false;
 const quizContainer = document.getElementById("quiz-container");
 const startQuizButton = document.getElementById("start-quiz");
 const resultsContainer = document.getElementById("results-container");
+var currentQuestionIndex = 0;
+
+
+function startQuiz() {
+// Displaying the question
+var startText = document.getElementById("start-text");
+startText.textContent = questions[questionsIndex].question;
+
 
 function buildQuiz() {
 }
