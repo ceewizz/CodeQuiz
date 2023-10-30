@@ -46,10 +46,10 @@ body {
   }
   
   button {
-    display: inline-block;
+    display: flex;
     margin: 5px;
     cursor: pointer;
-    font-family: "Architects Daughter", cursive;
+    font-family: 'Helvetica Neue', cursive;
     font-size: 100%;
     background-color: teal;
     border-radius: 5px;

@@ -4,43 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz</title>
-    <link rel="stylesheet" href="./CSS/style.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="scores"><a href="score.html">View Highscores</a></div>
+    <div class = "scores"><a href = "score.html">View Highscores</a></div>
 
-    <div class="timer">Time: <span id="time">0</span></div>
+    <div class = "timer">Time: <span id = "time">0</span></div>
 
-    <div class="wrapper">
-      <div id="start-screen" class="start">
+    <div class = "wrapper">
+      <div id = "start-screen" class="start">
         <h1>Coding Quiz</h1>
         <p>
-          Think you got what it takes? I challenge you to a Quiz! :)
+          Think you got what it takes? I challenge you to a Quiz! Answer all the questions as quickly as you can. Keep in mind that each question that is incorrect will result in deduction of the total remaining time. Try your best, and GOOD LUCK!
         </p>
-        <button id="start">Start Quiz</button>
+        <button id = "start">Start Quiz</button>
       </div>
 
-      <div id="questions" class="hide">
-        <h2 id="question-title"></h2>
-        <div id="choices" class="choices"></div>
+      <div id = "questions" class = "hide">
+        <h2 id = "question-title"></h2>
+        <div id = "choices" class="choices"></div>
       </div>
 
-      <div id="end-screen" class="hide">
+      <div id = "end-screen" class = "hide">
         <h2>All done!</h2>
-        <p>Your score is <span id="final-score"></span>.</p>
+        <p>Your score is <span id = "final-score"></span>.</p>
         <p>
-          Enter initials: <input type="text" id="initials" max="3" />
-          <button id="submit">Submit</button>
+          Enter initials: <input type = "text" id = "initials" max = "5"> 
+          </p>
+
+          <button id = "submit">Submit</button>
         </p>
       </div>
 
-      <div id="feedback" class="feedback hide"></div>
+      <div id = "feedback" class = "feedback hide"></div>
     </div>
 
-    <script src="./assets/questions.js"></script>
-    <script src="./assets/script.js"></script>
+    <script src = "./assets/questions.js"></script>
+    <script src = "./assets/script.js"></script>
+    <script src = "./assets/score.js"></script>
   </body>
 </html>

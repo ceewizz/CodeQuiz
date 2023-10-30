@@ -1,12 +1,12 @@
 
 // Creating elements
-var questionsEl = document.getElementById("question");
-var timerEl = document.getElementById("timer");
-var choicesEl = document.from(document.getElementsByClassName("choice-text"));
-var feedbackEl = document.getElementById("feedback");
-var initialsEl = document.getElementById("initials");
-var startButton = document.getElementById("start-button");
-var SubmitBtn = document.getElementById("submit-btn");
+var questionsEl = document.querySelector("#questions");
+var timerEl = document.querySelector("#time");
+var choicesEl = document.querySelector("#choices");
+var feedbackEl = document.querySelector("#feedback");
+var initialsEl = document.querySelector("#initials");
+var startBtn = document.querySelector("#start");
+var submitBtn = document.querySelector("#submit");
 
 
 // Variables setting for quiz
@@ -15,43 +15,45 @@ var time = questions.length * 15;
 var timerId;
 
 
-// function to start the quiz
 function startQuiz() {
-// Displaying the question
-var startTextEl = document.getElementById("start-text");
-startTextEl.setAttribute("class", "hide");
-
-// Showing the questions function
-questionsEl.removeAttribute("class");
-
-// Starting the timer
-timerId = setInterval(clockTick, 1000); 
-
-// Starting the clock
-timerEl.textContent = time;
-
-getQuestion();
-}
-
-
-// function to get the question
-function getQuestion() {
+    // hide start screen
+    var startScreenEl = document.getElementById("start-screen");
+    startScreenEl.setAttribute("class", "hide");
+  
+    // un-hide questions section
+    questionsEl.removeAttribute("class");
+  
+    // start timer
+    timerId = setInterval(clockTick, 1000);
+  
+    // show starting time
+    timerEl.textContent = time;
+  
+    getQuestion();
+  }
+  
+  function getQuestion() {
+    // get current question object from array
     var currentQuestion = questions[currentQuestionIndex];
-
-    // Changing the title  with the current question
+  
+    // update title with current question
     var titleEl = document.getElementById("question-title");
-    titleEl.textContent = currentQuestion.question;
+    titleEl.textContent = currentQuestion.title;
 
     // Clear out / bypass any questions already answered
     choicesEl.innerHTML = "";
 
     // looping through the answers
-    currentQuestion.choicesEl.forEach(function (choice, i) {
+    currentQuestion.choicesEl.Foreach(function (choice, i) {
+        // Creating the choice buttons
+
         var choiceNode = document.createElement("button");
         choiceNode.setAttribute("class", "choice");
-        choiceNode.setAttribute("value", i);
+        choiceNode.setAttribute("value", "choice");
 
-        choiceNode.textContent = i + 1 + " . " + choice;
+
+        choiceNode.textContent = i + 1 + ". " + choice;
+
 
         // Adding event listeners to the choice buttons
         choiceNode.onclick = questionClick;
@@ -65,23 +67,25 @@ function getQuestion() {
 // checking the answer whether it's correct or not
 function questionClick() {
     // If answer is incorrect, penalize the time
-    if (this.value!== questions[currentQuestionIndex].answer) {
-        timee -= 15;
+    if (this.value !== questions[currentQuestionIndex].answer) {
+        time -= 15;
 
-        if (timee < 0) {
-            timee = 0;
+        // Minus 15 seconds to show the feedback
+
+        if (time < 0) {
+            time = 0;
         }
 
 
-        // Showing the time on the page
-        timerEl.textContent = timee;
+        // Showing updated time on the page
+        timerEl.textContent = time;
         feedbackEl.textContent = "Incorrect!";
-        feedbackEl.style.color = "orange";
-        feedbackEl.style.fontSize = "120%";
+        feedbackEl.style.color = "Red";
+        feedbackEl.style.fontSize = "400%";
     } else {
         feedbackEl.textContent = "Correct!";
-        feedbackEl.style.color = "green";
-        feedbackEl.style.fontSize = "120%";
+        feedbackEl.style.color = "Green";
+        feedbackEl.style.fontSize = "400%";
     }
 
     //  Flasing of the question for feedback
@@ -111,13 +115,16 @@ function quizEnd() {
     // Showing the end page
     var endScreenEl = document.getElementById("end-screen");
     endScreenEl.removeAttribute("class");
+    
+
 
     // show final score
     var finalScoreEl = document.getElementById("final-score");
     finalScoreEl.textContent = time;
 
     // hide the questions section
-    questionsEl.setAttribute("class", "hide");
+    questions.setAttribute("class", "hide");
+
 }
 
 function clockTick() {
@@ -132,13 +139,13 @@ function clockTick() {
     }
 }
    // Function to save the high score
-   function saveHighScore() {
+   function saveHighscore() {
     // Getting the initials input
     var initials = initialsEl.value.trim();
      
-    if (initials!== "") {
+    if (initials !== "") {
         // Geting the saved scores from local storage, if there are any and set an empty array for none
-        var highScores = JSON.parse(localStorage.getItem("HighScores")) || [];
+        var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
 
         // New object to store the score
         var newScore = {
@@ -146,8 +153,8 @@ function clockTick() {
             initials: initials
         };
         // Pushing the new score to local storage of user
-        highScores.push(newScore);
-        window.localStorage.setItem("HighScores", JSON.stringify(HighScores));
+        highscores.push(newScore);
+        window.localStorage.setItem("highscores", JSON.stringify(highscores));
 
         // Showing the high score page
         window.location.href= "score.html";
@@ -155,18 +162,18 @@ function clockTick() {
 }
    
 // Checking for the enter event
-function checkEnter(event) {
+function checkforEnter(event) {
     // Checking if the key pressed is the enter key
     if (event.key === "Enter") {
-        saveHighScore();
+        saveHighscore();
     }
 }
 
 // submit saves highscore  when clicked
-SubmitBtn.onclick = saveHighScore;
+submitBtn.onclick = saveHighscore;
 
 // On click of the start to start the quiz
-startButton.onclick = startQuiz;
+startBtn.onclick = startQuiz;
 
 
-initialsEl.onkeyup = checkForEnter;
+initialsEl.onkeyup = checkforEnter;
