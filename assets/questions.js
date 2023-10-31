@@ -6,7 +6,7 @@ var questions = [
       "other arrays", 
       "booleans", 
       "all of the above"],
-      answer: "all of the above"
+      answer: "all of the above",
     },
     {
       title: "Commonly used data types DO NOT include:",
