@@ -49,7 +49,7 @@ var questions = [
       answer: "function"
     },
     {
-      title: "Which of the following statements is correct about the partition step?"
+      title: "Which of the following statements is correct about the partition step?",
       choices: ["The pivot element is chosen randomly", 
               "The pivot element is chosen in the middle of the array", 
               "The pivot element is chosen at the end of the array", 
@@ -57,7 +57,7 @@ var questions = [
       answer: "The pivot element is chosen randomly"
     },
     {
-      title: "Which of the following statements about binary trees is NOT true?"
+      title: "Which of the following statements about binary trees is NOT true?",
       choices: ["A binary tree is a tree in which each node has at most two children", 
               "A binary tree is a tree in which each node has at most three children", 
               "A binary tree is a tree in which each node has at most four children", 
